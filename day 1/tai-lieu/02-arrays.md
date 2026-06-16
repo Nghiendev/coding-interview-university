@@ -23,6 +23,20 @@ index:  0    1    2    3    4
 
 ---
 
+## Tư duy thiết kế (mental model)
+
+- **Array = “random access + contiguous memory”**: tối ưu cho truy cập theo index và duyệt tuần tự.
+- **Chèn/xóa ở giữa** luôn tốn vì phải **dịch phần tử** để giữ liên tục.
+- **Dynamic array**: tách “kích thước đang dùng” (`size`) và “sức chứa” (`capacity`).
+- **Amortized O(1)**: resize gấp đôi để tổng chi phí copy trên n lần push vẫn tuyến tính.
+
+Khi gặp bài toán, hỏi 3 câu:
+1. Có cần truy cập theo index nhiều không?
+2. Có cần chèn/xóa ở đầu/giữa thường xuyên không?
+3. Dữ liệu có cần cache-friendly / duyệt tuần tự nhiều không?
+
+---
+
 ## Mảng tĩnh vs mảng động (Dynamic Array)
 
 | | Mảng tĩnh | Mảng động (vector) |
@@ -96,6 +110,15 @@ Không cần implement hôm nay; chỉ biết khái niệm.
 | Truy cập index | O(1) | O(n) |
 | Chèn đầu | O(n) | O(1) với con trỏ head |
 | Bộ nhớ | Liên tục | Rải rác (node + pointer) |
+
+---
+
+## Ứng dụng thực tế
+
+- **Buffer / log / stream**: append nhiều → dynamic array hợp lý (amortized O(1)).
+- **Hình ảnh / ma trận / tensor**: dữ liệu dạng lưới → array/matrix giúp truy cập theo index nhanh.
+- **Parsing / compiler**: token list thường lưu trong array để random access nhanh khi phân tích.
+- **Hệ thống hiệu năng cao**: contiguous memory giúp tận dụng CPU cache, thường nhanh hơn linked list.
 
 ---
 

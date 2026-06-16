@@ -11,6 +11,23 @@ Hash table ánh xạ **key → value** để truy cập trung bình O(1).
 
 ---
 
+## Tư duy (mental model)
+
+Hash table giải bài toán: **tra cứu/đếm theo key nhanh**.
+
+Khi gặp bài toán, thử hỏi:
+- Có cần “đã thấy chưa?” → **set**
+- Có cần “đếm số lần xuất hiện” → **map key → count**
+- Có cần “ghép nhóm theo signature” → **map signature → list**
+- Có cần “prefix sum / trạng thái đã gặp” → **map state → frequency**
+
+Trong implement/thiết kế, 3 đòn bẩy chính:
+- **hash function** (phân tán tốt)
+- **collision strategy** (chaining vs open addressing)
+- **resize policy** (load factor, rehash)
+
+---
+
 ## 2) Collision resolution
 
 ### A) Chaining
@@ -107,4 +124,14 @@ Bạn implement linear probing là đủ cho Day 4.
 
 ### Design (hash table + linked list)
 - LRU Cache (hash map + doubly linked list)
+
+---
+
+## 8) Ứng dụng thực tế
+
+- **Index** trong database / search engine (khái niệm tra cứu theo key)
+- **Cache**: key → value (cộng thêm TTL/LRU/LFU)
+- **Dedupe**: set để loại trùng (hash fingerprint)
+- **Router / load balancer**: consistent hashing (mức nâng cao)
+- **Compiler/interpreter**: symbol table (tên biến → địa chỉ/thông tin)
 

@@ -17,6 +17,15 @@ Use cases phỏng vấn:
 - DFS (iterative)
 - Backtracking / undo history
 
+### Tư duy (mental model)
+
+- Stack là “**history**”: cái gì vào sau cùng sẽ được xử lý/hoàn tác trước.
+- Khi bài toán có dạng:
+  - “khớp cặp” (parentheses)
+  - “phần tử gần nhất bên trái/phải thỏa điều kiện”
+  - “duyệt cây/đồ thị không đệ quy”
+  → nghĩ tới stack.
+
 ### Monotonic stack (cực hay gặp)
 
 Giữ stack theo **tăng dần** hoặc **giảm dần** để xử lý “phần tử kế tiếp lớn hơn/nhỏ hơn”.
@@ -65,6 +74,11 @@ Use cases phỏng vấn:
 - Sliding window (kết hợp deque)
 - Producer/consumer conceptual
 
+### Tư duy (mental model)
+
+- Queue là “**worklist**”: phần tử đến trước xử lý trước → phù hợp cho BFS, pipeline.
+- Với circular buffer, nghĩ như “vòng tròn”: head/tail chạy vòng theo modulo, invariants quyết định đúng/sai.
+
 ### Deque (double-ended queue)
 
 Deque là cấu trúc cho phép:
@@ -100,4 +114,19 @@ Trong phỏng vấn, deque thường xuất hiện ở:
   - Cách 2: “chừa 1 slot trống” (khó hơn, dễ nhầm)
 - Wrap-around:
   - `idx = (idx + 1) % capacity`
+
+---
+
+## 5) Ứng dụng thực tế
+
+### Stack
+- **Call stack** (runtime)
+- **Undo/redo** trong editor
+- **Expression evaluation** (RPN, shunting-yard)
+
+### Queue/Deque
+- **Message queue / event loop** (concept)
+- **BFS/level-order** trong trees/graphs
+- **Streaming buffer** (circular buffer) trong audio/networking
+- **Rate limiting** theo time window (queue)
 

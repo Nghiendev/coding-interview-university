@@ -15,6 +15,20 @@ Giả sử `a`, `b` là số nguyên.
 
 ---
 
+## Tư duy (mental model)
+
+Bit manipulation mạnh khi bài toán có:
+- **trạng thái nhị phân** (on/off), **bitmask** cho subset
+- yêu cầu **tối ưu bộ nhớ** (nhiều boolean)
+- pattern như “xuất hiện 2 lần trừ 1 lần” (XOR), “đếm bit 1”
+
+Trong phỏng vấn, bạn thường biến đổi bài toán về:
+- XOR để triệt tiêu cặp
+- `x & (x-1)` để bỏ bit 1 thấp nhất
+- bitmask để biểu diễn tập con / trạng thái DP
+
+---
+
 ## 2) Bit tricks kinh điển
 
 ### A) Check bit i có bật không
@@ -75,4 +89,13 @@ Time: O(number_of_set_bits)
 
 - Shift với số âm: tùy ngôn ngữ (arithmetic vs logical shift)
 - `~x` trong Python cho ra số âm vì int không giới hạn bit (cần mask nếu giả lập 32-bit)
+
+---
+
+## 6) Ứng dụng thực tế
+
+- **Permissions/flags**: quyền truy cập (read/write/execute), feature flags, bitset config.
+- **Networking/protocols**: packed headers, checksums, bit fields.
+- **Graphics/compute**: mask, packing/unpacking, SIMD-friendly representations (khái niệm).
+- **Bloom filter / bitmap index** (nâng cao): dùng bitset để tiết kiệm bộ nhớ.
 

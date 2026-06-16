@@ -69,6 +69,25 @@ while n > 1:
 
 ---
 
+## Tư duy (mental model) khi dùng Big-O
+
+- **Xác định “n” là gì**: số phần tử? số cạnh/đỉnh? độ dài chuỗi? phạm vi tìm kiếm?
+- **Đếm phép toán chi phối**: vòng lặp, số lần truy cập cấu trúc dữ liệu, số lần gọi hàm.
+- **Tách “average vs worst”**: hash table thường average O(1) nhưng worst O(n); quicksort average O(n log n) nhưng worst O(n²).
+- **Đổi chi phí thời gian ↔ bộ nhớ**: dùng hash/set tăng space để giảm time; dùng two pointers để giữ space O(1).
+- **Amortized**: một operation có thể thỉnh thoảng đắt (resize), nhưng trung bình vẫn rẻ (dynamic array push).
+
+---
+
+## Ứng dụng thực tế
+
+- **Chọn kiến trúc**: O(n²) có thể OK nếu n ≤ 1e3, nhưng không ổn nếu n = 1e6.
+- **Hiệu năng hệ thống**: tránh vòng lặp lồng nhau trên dữ liệu lớn; ưu tiên streaming O(n) thay vì load-all O(n) + sort nếu không cần.
+- **Thiết kế API/data model**: thêm index (DB) để từ O(n) scan → O(log n) hoặc tốt hơn theo index.
+- **Ước lượng chi phí**: network round-trip thường “đắt” hơn CPU; đôi khi tối ưu Big-O chưa quan trọng bằng giảm số lần gọi mạng.
+
+---
+
 ## Ví dụ phân tích
 
 ```python

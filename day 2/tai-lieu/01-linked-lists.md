@@ -13,6 +13,22 @@ head -> [A|next] -> [B|next] -> [C|None]
 
 ---
 
+## Tư duy thiết kế (mental model)
+
+- **Linked list = “con trỏ + node rời rạc”**: tối ưu cho **chèn/xóa** khi đã có con trỏ tới vị trí.
+- Cái giá phải trả: **không có random access** → `value_at(i)` phải đi lần lượt O(n).
+- Khi implement, giữ rõ **invariants**:
+  - `head` trỏ node đầu hoặc `None`
+  - `tail` (nếu có) trỏ node cuối hoặc `None`
+  - `size` luôn đúng sau mọi operation
+
+Trong phỏng vấn, linked list thường không phải để “lưu danh sách” mà để luyện pattern:
+- **two pointers**
+- **reverse**
+- **cycle detection**
+
+---
+
 ## 2) So sánh với Array (mảng)
 
 | Tiêu chí | Array | Singly Linked List |
@@ -84,4 +100,13 @@ head = prev
 - insert/erase ở đầu, ở giữa, ở cuối
 - value không tồn tại
 - reverse rỗng / 1 phần tử / nhiều phần tử
+
+---
+
+## Ứng dụng thực tế
+
+- **Free list / allocator** (khái niệm): quản lý block rảnh trong hệ thống cấp phát bộ nhớ.
+- **LRU cache**: thường dùng **doubly linked list + hash map** để O(1) get/put.
+- **Hệ thống/driver**: danh sách các task/descriptor đôi khi dùng linked list (nhưng nhiều hệ thống hiện đại vẫn ưu tiên array vì cache).
+- **Queue bằng linked list**: enqueue/dequeue O(1) ổn định (Day 3).
 
