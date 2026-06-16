@@ -1,10 +1,13 @@
-# LeetCode Day 3 — Stack & Queue
+# LeetCode Day 3 — Stack & Queue (Classic set)
 
-Làm 3 bài sau (1 stack, 1 queue, 1 tổng hợp). Mỗi bài: phác thảo → code → test → Big-O.
+Hôm nay mục tiêu là nắm **pattern** (stack cơ bản, monotonic stack, queue/deque).  
+Làm theo thứ tự: **Core 3** → (nếu còn thời gian) **Classic set**.
 
 ---
 
-## Bài 1 (Stack): Valid Parentheses
+## Core 3 (bắt buộc)
+
+### 1) Valid Parentheses (stack cơ bản)
 
 - Link: https://leetcode.com/problems/valid-parentheses/
 - Độ khó: Easy
@@ -13,7 +16,7 @@ Làm 3 bài sau (1 stack, 1 queue, 1 tổng hợp). Mỗi bài: phác thảo →
 
 ---
 
-## Bài 2 (Stack): Min Stack
+### 2) Min Stack (two-stack)
 
 - Link: https://leetcode.com/problems/min-stack/
 - Độ khó: Medium
@@ -22,16 +25,32 @@ Làm 3 bài sau (1 stack, 1 queue, 1 tổng hợp). Mỗi bài: phác thảo →
 
 ---
 
-## Bài 3 (Queue): Implement Stack using Queues
+### 3) Implement Queue using Stacks (stack/queue chuyển đổi)
 
-- Link: https://leetcode.com/problems/implement-stack-using-queues/
+- Link: https://leetcode.com/problems/implement-queue-using-stacks/
 - Độ khó: Easy
-- Ý tưởng: 1 queue xoay vòng hoặc 2 queue
+- Ý tưởng: 2 stack (in/out) để amortized O(1)
+
+---
+
+## Classic set (chọn 2–4)
+
+### Monotonic stack
+
+- Daily Temperatures: https://leetcode.com/problems/daily-temperatures/
+- Next Greater Element I: https://leetcode.com/problems/next-greater-element-i/
+- Largest Rectangle in Histogram: https://leetcode.com/problems/largest-rectangle-in-histogram/ (Hard nhưng cực kinh điển)
+
+### Queue / Deque / BFS
+
+- Sliding Window Maximum (deque): https://leetcode.com/problems/sliding-window-maximum/
+- Number of Recent Calls (queue): https://leetcode.com/problems/number-of-recent-calls/
+- Binary Tree Level Order Traversal (BFS queue): https://leetcode.com/problems/binary-tree-level-order-traversal/
 
 ---
 
 ## Bonus (nếu còn thời gian)
 
-- Implement Queue using Stacks: https://leetcode.com/problems/implement-queue-using-stacks/
-- Daily Temperatures: https://leetcode.com/problems/daily-temperatures/ (monotonic stack)
+- Evaluate Reverse Polish Notation: https://leetcode.com/problems/evaluate-reverse-polish-notation/
+- Simplify Path: https://leetcode.com/problems/simplify-path/
 

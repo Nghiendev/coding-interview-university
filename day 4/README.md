@@ -2,7 +2,7 @@
 
 Hôm nay theo [README-vi.md](../translations/README-vi.md) bạn sẽ học **Hash Table** và tự implement bằng **open addressing (linear probing)**.
 
-> Mục tiêu cuối ngày: hiểu collision + load factor + resize; tự code `HashTable` (add/exists/get/remove); giải 3 bài LeetCode dựa trên hash map.
+> Mục tiêu cuối ngày: hiểu collision + load factor + resize + tombstone; tự code `HashTable` (add/exists/get/remove); làm **Core 3** LeetCode (lookup + grouping + prefix sum) và chọn thêm 1–2 bài kinh điển.
 
 ---
 
@@ -33,7 +33,7 @@ day 4/
 | **12:00 – 13:00** | Nghỉ trưa | |
 | **13:00 – 15:00** | Implement remove (tombstone) + resize | `code/hash_table.py` |
 | **15:00 – 16:00** | Viết test theo checklist | [bai-tap/implement.md](bai-tap/implement.md) |
-| **16:00 – 18:30** | 3 bài LeetCode (hash map) | [bai-tap/leetcode-day4.md](bai-tap/leetcode-day4.md) |
+| **16:00 – 18:30** | LeetCode: Core 3 + 1–2 bài classic | [bai-tap/leetcode-day4.md](bai-tap/leetcode-day4.md) |
 | **18:30 – 19:00** | Ôn: trade-off chaining vs probing, Big-O | `tai-lieu/01-hash-table.md` |
 
 ---

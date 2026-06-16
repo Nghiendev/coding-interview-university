@@ -1,10 +1,17 @@
-# LeetCode Day 4 — Hash Map / Hash Set
+# LeetCode Day 4 — Hash Map / Hash Set (Classic set)
 
-Làm 3 bài sau (đúng tinh thần hash table). Mỗi bài: phác thảo → code → test → Big-O.
+Hôm nay mục tiêu là nắm 3 pattern chính:
+- **lookup O(1)** (Two Sum / membership)
+- **grouping/counting** (anagrams, frequency)
+- **prefix sum + hash map** (rất hay gặp)
+
+Làm theo thứ tự: **Core 3** → (nếu còn thời gian) **Classic set**.
 
 ---
 
-## Bài 1: Two Sum
+## Core 3 (bắt buộc)
+
+### 1) Two Sum
 
 - Link: https://leetcode.com/problems/two-sum/
 - Độ khó: Easy
@@ -13,16 +20,7 @@ Làm 3 bài sau (đúng tinh thần hash table). Mỗi bài: phác thảo → co
 
 ---
 
-## Bài 2: Contains Duplicate
-
-- Link: https://leetcode.com/problems/contains-duplicate/
-- Độ khó: Easy
-- Ý tưởng: set để phát hiện trùng
-- Target: Time O(n), Space O(n)
-
----
-
-## Bài 3: Group Anagrams
+### 2) Group Anagrams
 
 - Link: https://leetcode.com/problems/group-anagrams/
 - Độ khó: Medium
@@ -31,8 +29,27 @@ Làm 3 bài sau (đúng tinh thần hash table). Mỗi bài: phác thảo → co
 
 ---
 
-## Bonus (nếu còn thời gian)
+### 3) Subarray Sum Equals K (prefix sum + hash map)
+
+- Link: https://leetcode.com/problems/subarray-sum-equals-k/
+- Độ khó: Medium
+- Ý tưởng: prefixSum, đếm số lần prefixSum xuất hiện
+- Target: Time O(n), Space O(n)
+
+---
+
+## Classic set (chọn 2–4)
+
+### Hash set
+
+- Contains Duplicate: https://leetcode.com/problems/contains-duplicate/
+- Longest Consecutive Sequence: https://leetcode.com/problems/longest-consecutive-sequence/
+
+### Counting / frequency
 
 - Top K Frequent Elements: https://leetcode.com/problems/top-k-frequent-elements/ (hash map + heap/bucket)
-- Longest Consecutive Sequence: https://leetcode.com/problems/longest-consecutive-sequence/ (hash set)
+
+### Design
+
+- LRU Cache: https://leetcode.com/problems/lru-cache/ (hash map + doubly linked list)
 

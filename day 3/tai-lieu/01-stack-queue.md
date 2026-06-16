@@ -17,6 +17,19 @@ Use cases phỏng vấn:
 - DFS (iterative)
 - Backtracking / undo history
 
+### Monotonic stack (cực hay gặp)
+
+Giữ stack theo **tăng dần** hoặc **giảm dần** để xử lý “phần tử kế tiếp lớn hơn/nhỏ hơn”.
+
+Mẫu câu hỏi kinh điển:
+- Next Greater Element
+- Daily Temperatures
+- Largest Rectangle in Histogram
+
+Invariants:
+- Stack lưu **index** (hay dùng hơn value vì cần tính khoảng cách).
+- Duyệt từ trái sang phải: khi gặp phần tử “phá” tính đơn điệu → pop cho đến khi hợp lệ.
+
 ---
 
 ## 2) Queue (FIFO)
@@ -52,6 +65,15 @@ Use cases phỏng vấn:
 - Sliding window (kết hợp deque)
 - Producer/consumer conceptual
 
+### Deque (double-ended queue)
+
+Deque là cấu trúc cho phép:
+- push/pop ở **cả 2 đầu**: O(1)
+
+Trong phỏng vấn, deque thường xuất hiện ở:
+- Sliding window maximum (monotonic deque)
+- 0-1 BFS (graph trọng số 0/1)
+
 ---
 
 ## 3) Edge cases phải test
@@ -59,4 +81,23 @@ Use cases phỏng vấn:
 - pop/dequeue khi rỗng (raise)
 - enqueue khi full (với circular buffer)
 - chuyển trạng thái rỗng → 1 phần tử → rỗng (head/tail reset đúng)
+
+---
+
+## 4) Các “bẫy” thường gặp khi implement
+
+### Stack
+- `pop/peek` khi rỗng → nên raise `IndexError`
+- Không nhất quán: top ở cuối list hay đầu list? (nên để **cuối** để O(1))
+
+### Queue (linked list)
+- Khi dequeue phần tử cuối cùng: cần set cả `head = None` và `tail = None`
+- Quên cập nhật `size`
+
+### Queue (circular buffer)
+- Phân biệt `empty` vs `full`:
+  - Cách 1: lưu biến `size`
+  - Cách 2: “chừa 1 slot trống” (khó hơn, dễ nhầm)
+- Wrap-around:
+  - `idx = (idx + 1) % capacity`
 

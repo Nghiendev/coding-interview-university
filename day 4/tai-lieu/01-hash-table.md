@@ -33,6 +33,11 @@ while table[i] occupied and table[i].key != key:
 
 **Remove** cần tombstone (đánh dấu “đã xóa”) để không phá chuỗi probe.
 
+#### Tại sao tombstone quan trọng?
+
+Vì `get(key)` phải probe qua các slot đã bị xóa trước đó để tìm key nằm sâu hơn trong cluster.
+Nếu bạn biến slot “đã xóa” thành “empty” thì `get` sẽ dừng sớm và trả sai.
+
 ---
 
 ## 3) Load factor & resize
@@ -47,6 +52,12 @@ Resize nghĩa là:
 - tạo table mới capacity lớn hơn (thường gấp đôi)
 - **rehash lại tất cả entries** (vì `h % m` thay đổi)
 
+### Khi nào resize?
+
+Gợi ý thực dụng cho linear probing:
+- Resize up khi load factor > 0.6–0.75
+- (Tùy chọn) Rehash/cleanup khi tombstone quá nhiều (vì tombstone làm probe dài)
+
 ---
 
 ## 4) Big-O (average vs worst)
@@ -60,9 +71,40 @@ Trong phỏng vấn, bạn thường nói:
 
 ---
 
-## 5) Sai lầm hay gặp khi implement probing
+## 5) Probing variants (biết để nói)
+
+- **Linear probing**: `i+1, i+2, ...` (đơn giản, cache-friendly nhưng dễ primary clustering)
+- **Quadratic probing**: `i+1², i+2², ...` (giảm clustering)
+- **Double hashing**: bước nhảy phụ thuộc key (giảm clustering tốt hơn)
+
+Bạn implement linear probing là đủ cho Day 4.
+
+---
+
+## 6) Sai lầm hay gặp khi implement probing
 
 - Không dùng tombstone → `get` có thể “stop sớm” và báo sai
 - Resize nhưng không rehash
 - Không phân biệt **Empty slot** vs **Deleted slot**
+- Probe vòng quanh table nhưng không có điều kiện dừng an toàn (có thể loop vô hạn)
+
+---
+
+## 7) “Bài kinh điển” gắn với hash table
+
+### Hash map / counting
+- Two Sum
+- Group Anagrams
+- Top K Frequent Elements (đếm + heap/bucket)
+
+### Hash set
+- Longest Consecutive Sequence
+- Contains Duplicate
+
+### Prefix sum + hash map (rất hay gặp)
+- Subarray Sum Equals K
+- Continuous Subarray Sum
+
+### Design (hash table + linked list)
+- LRU Cache (hash map + doubly linked list)
 
