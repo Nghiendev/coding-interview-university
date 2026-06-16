@@ -13,6 +13,39 @@ Giả sử `a`, `b` là số nguyên.
 | `<<` | shift left | nhân 2^k |
 | `>>` | shift right | chia 2^k (phụ thuộc ngôn ngữ với số âm) |
 
+### Mô phỏng: bit layout (số 13 = 0b1101)
+
+```
+bit index:  3   2   1   0
+           +---+---+---+---+
+           | 1 | 1 | 0 | 1 |  = 8+4+0+1 = 13
+           +---+---+---+---+
+             ↑       ↑
+          bit3=1  bit0=1
+
+set bit 2:    13 | (1<<2)  → 0b1111 = 15
+clear bit 3:  13 & ~(1<<3) → 0b0101 = 5
+```
+
+### Mô phỏng: x & (x-1) xóa bit 1 thấp nhất
+
+```
+x     = 0b101100  (44)
+x-1   = 0b101011
+x&(x-1)= 0b101000  (40)  ← đã bỏ bit 1 ở vị trí 2
+
+Lặp lại → popcount = số lần lặp
+```
+
+### Mô phỏng: XOR — Single Number
+
+```
+nums = [4, 1, 2, 1, 2]
+xor  = 0 ^ 4 ^ 1 ^ 2 ^ 1 ^ 2
+     = 4 ^ (1^1) ^ (2^2)
+     = 4 ^ 0 ^ 0 = 4   ← số xuất hiện 1 lần
+```
+
 ---
 
 ## Tư duy (mental model)

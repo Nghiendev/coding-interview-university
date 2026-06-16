@@ -9,6 +9,34 @@ Hash table ánh xạ **key → value** để truy cập trung bình O(1).
 - Map `h` về index trong mảng kích thước `m` (thường dùng `h % m`)
 - Xử lý **collision** khi nhiều key cùng index
 
+### Mô phỏng: hash → index + linear probing
+
+```
+keys:  "cat"→h%7=3,  "dog"→h%7=3 (collision!),  "bird"→h%7=1
+
+index:  0    1      2    3     4    5    6
+      +----+------+----+-----+----+----+----+
+      |    | bird |    | cat |dog |    |    |
+      +----+------+----+-----+----+----+----+
+                    ↑           ↑
+                  h%7=1      h%7=3, probe→4
+```
+
+### Mô phỏng: tombstone khi remove
+
+```
+Trước remove "cat":  [ bird | cat | dog ]
+Sau remove "cat":    [ bird | DEL  | dog ]   ← DEL = tombstone (không phải empty!)
+get("dog") vẫn probe qua DEL để tìm ở index 2.
+```
+
+### Mô phỏng: resize (load factor vượt ngưỡng)
+
+```
+Table cũ (m=4, n=3, α=0.75):  [ A | B | C | _ ]
+→ resize gấp đôi m=8, rehash TẤT CẢ entries (vì h%8 khác h%4)
+```
+
 ---
 
 ## Tư duy (mental model)

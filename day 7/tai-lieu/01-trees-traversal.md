@@ -11,6 +11,45 @@ Khi giải bài tree, bạn gần như luôn viết theo khung:
 
 Đây là cách nghĩ quan trọng hơn việc thuộc traversal.
 
+### Mô phỏng: cấu trúc cây mẫu
+
+```
+        1
+      /   \
+     2     3
+    / \     \
+   4   5     6
+
+Preorder:  1 → 2 → 4 → 5 → 3 → 6   (N trước)
+Inorder:   4 → 2 → 5 → 1 → 3 → 6   (N giữa)
+Postorder: 4 → 5 → 2 → 6 → 3 → 1   (N sau)
+```
+
+### Mô phỏng: BFS (level-order)
+
+```
+Queue: [1]
+→ dequeue 1, enqueue 2,3     → output level 0: [1]
+→ dequeue 2, enqueue 4,5     → output level 1: [2, 3]
+→ dequeue 3, enqueue 6       → ...
+→ dequeue 4,5,6              → output level 2: [4, 5, 6]
+
+Kết quả: [[1], [2,3], [4,5,6]]
+```
+
+### Mô phỏng: DFS recursion (call stack)
+
+```
+dfs(1)
+  dfs(2)
+    dfs(4)  → base
+    dfs(5)  → base
+  dfs(3)
+    dfs(6)  → base
+
+Stack depth ≈ chiều cao cây h
+```
+
 ---
 
 ## 2) Traversals (DFS)

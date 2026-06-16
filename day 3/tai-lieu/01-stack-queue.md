@@ -12,6 +12,35 @@ Operations:
 **Big-O** (array/dynamic array):
 - `push`, `pop`, `peek`: **O(1)** (push có thể amortized O(1))
 
+### Mô phỏng Stack (push/pop)
+
+```
+push(1) push(2) push(3)     pop() → 3
+
+        top
+         ↓
+      +-----+
+      |  3  |  ← pop lấy đây
+      +-----+
+      |  2  |
+      +-----+
+      |  1  |
+      +-----+
+```
+
+Valid Parentheses — stack khớp ngoặc:
+
+```
+Input:  ( [ { } ] )
+
+Step:   (  → push '('
+        [  → push '['
+        {  → push '{'
+        }  → pop '{'  ✓
+        ]  → pop '['  ✓
+        )  → pop '('  ✓  → hợp lệ
+```
+
 Use cases phỏng vấn:
 - Dấu ngoặc hợp lệ, expression evaluation
 - DFS (iterative)
@@ -68,6 +97,33 @@ Giữ:
 Big-O:
 - `enqueue`, `dequeue`: **O(1)**
 - `empty/full`: **O(1)**
+
+### Mô phỏng Queue (linked list + tail)
+
+```
+head                              tail
+ ↓                                  ↓
+[A|next] -> [B|next] -> [C|None]
+
+enqueue(D): tail.next = D, tail = D
+dequeue():  lấy A, head = head.next
+```
+
+### Mô phỏng Circular buffer (capacity=4)
+
+```
+Ban đầu:  [ _ | _ | _ | _ ]   head=0 tail=0 size=0
+
+enqueue(A,B,C):
+          [ A | B | C | _ ]   head=0 tail=3 size=3
+
+dequeue() → A:
+          [ _ | B | C | _ ]   head=1 tail=3 size=2
+
+enqueue(D,E) — wrap-around:
+          [ E | B | C | D ]   head=1 tail=1 size=4 (full)
+           ↑tail wraps to 0
+```
 
 Use cases phỏng vấn:
 - BFS
