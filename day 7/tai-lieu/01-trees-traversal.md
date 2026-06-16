@@ -71,6 +71,52 @@ Cho node `N` với `left`, `right`.
 
 BFS duyệt theo tầng, dùng **queue**.
 
+### BFS là gì (nói đơn giản)
+
+- BFS = “duyệt **theo khoảng cách** từ gốc”.
+- Trên tree, “khoảng cách” = số cạnh từ root → node.
+- Queue đảm bảo: node nào vào trước thì ra trước → xử lý hết level hiện tại rồi mới sang level sau.
+
+### BFS từng bước (kèm queue)
+
+Với cây:
+
+```
+        1
+      /   \
+     2     3
+    / \     \
+   4   5     6
+```
+
+Ta làm:
+
+```
+queue = [1]
+pop 1 → output [1], push 2,3        queue=[2,3]
+pop 2 → output [1,2], push 4,5      queue=[3,4,5]
+pop 3 → output [1,2,3], push 6      queue=[4,5,6]
+pop 4 → ...
+```
+
+Nếu muốn **level-order dạng từng tầng**, bạn làm như sau:
+- Mỗi vòng lặp lấy `level_size = len(queue)` rồi pop đúng `level_size` node.
+
+Pseudocode:
+
+```
+queue = [root]
+while queue not empty:
+  level_size = len(queue)
+  level = []
+  repeat level_size times:
+    node = queue.popleft()
+    level.append(node.val)
+    if node.left: queue.append(node.left)
+    if node.right: queue.append(node.right)
+  result.append(level)
+```
+
 Use cases:
 - shortest path trên unweighted graph (tree cũng là graph)
 - level-order traversal, right side view
@@ -96,6 +142,24 @@ Giả sử có `n` nodes, height `h`.
 - Quên xử lý `None`
 - BFS: quên push con trái/phải đúng thứ tự
 - Recursion depth lớn (cây lệch): Python có thể RecursionError
+
+---
+
+## 5.5) DFS vs BFS — khi nào dùng cái nào?
+
+### DFS (stack/recursion) phù hợp khi:
+- Bạn cần đi sâu một nhánh trước: path sum, validate, serialize, backtracking.
+- Bạn cần space nhỏ khi cây cân: DFS dùng O(h).
+- Bạn muốn viết code gọn bằng recursion.
+
+### BFS (queue) phù hợp khi:
+- Bạn cần “gần nhất / ngắn nhất” theo số bước (unweighted).
+- Bạn cần theo tầng: level order, min depth, right side view.
+- Bạn cần xử lý đồng thời theo level (trải đều).
+
+Mẹo nhớ nhanh:
+- **BFS = gần nhất trước**
+- **DFS = sâu trước**
 
 ---
 
